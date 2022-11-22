@@ -1,7 +1,19 @@
-﻿using System.Collections.Generic;
+﻿// /**
+//  * File Name: FSM.cs
+//  * Create By: soybeanmilk
+//  * Create Time: 2022/11/22
+//  * Descrption:
+//  *
+//  */
+
+using System.Collections.Generic;
 
 namespace Framework.FSM
 {
+    /// <summary>
+    /// 有限状态机基类
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class FSM<T> where T : class, new()
     {
         private FSMState<T> curState;

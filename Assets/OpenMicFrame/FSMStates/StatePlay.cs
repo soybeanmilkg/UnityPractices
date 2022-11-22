@@ -1,9 +1,20 @@
-﻿using Framework.FSM;
+﻿// /**
+//  * File Name: StatePlay.cs
+//  * Create By: soybeanmilk
+//  * Create Time: 2022/11/22
+//  * Descrption:
+//  *
+//  */
+
+using Framework.FSM;
 using Framework.Game;
 using UnityEngine;
 
 namespace Framework.FSMStates
 {
+    /// <summary>
+    /// 开始状态/运行状态
+    /// </summary>
     public class StatePlay :FSMState<GameLauncher>
     {
         public override int StateType()

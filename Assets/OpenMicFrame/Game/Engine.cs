@@ -1,10 +1,21 @@
-﻿using System;
+﻿// /**
+//  * File Name: Engine.cs
+//  * Create By: soybeanmilk
+//  * Create Time: 2022/11/22
+//  * Descrption:
+//  *
+//  */
+
+using System;
 using Framework.Singleton;
 using UnityEngine;
 
 namespace Framework.Game
 {
-    public sealed class Engine: Singleton<Engine>
+    /// <summary>
+    /// 组合各管理类，提供基础服务
+    /// </summary>
+    public sealed class Engine : Singleton<Engine>
     {
         public void Init()
         {

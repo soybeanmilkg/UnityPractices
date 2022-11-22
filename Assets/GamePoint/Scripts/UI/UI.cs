@@ -7,6 +7,7 @@
 //  */
 
 using System;
+using System.Collections;
 using GamePoint.Event;
 using UnityEngine;
 

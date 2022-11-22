@@ -1,5 +1,18 @@
-﻿namespace Framework.FSM
+﻿// /**
+//  * File Name: FSMState.cs
+//  * Create By: soybeanmilk
+//  * Create Time: 2022/11/22
+//  * Descrption:
+//  *
+//  */
+
+namespace Framework.FSM
 {
+    
+    /// <summary>
+    /// 状态基类
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public abstract class FSMState<T> where T : class, new()
     {
         public abstract int StateType();

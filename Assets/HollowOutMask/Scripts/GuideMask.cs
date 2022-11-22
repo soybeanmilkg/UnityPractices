@@ -1,7 +1,18 @@
+// /**
+//  * File Name: GuideMask.cs
+//  * Create By: soybeanmilk
+//  * Create Time: 2022/11/22
+//  * Descrption:
+//  *
+//  */
+
 using System;
 using UnityEngine.UI;
 using UnityEngine;
 
+/// <summary>
+/// 镂空遮罩
+/// </summary>
 public class GuideMask : MonoBehaviour, ICanvasRaycastFilter
 {
     [SerializeField] private Material outMaskMat;

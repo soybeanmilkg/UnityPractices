@@ -1,9 +1,20 @@
-﻿using Framework.FSM;
+﻿// /**
+//  * File Name: StateEnd.cs
+//  * Create By: soybeanmilk
+//  * Create Time: 2022/11/22
+//  * Descrption:
+//  *
+//  */
+
+using Framework.FSM;
 using Framework.Game;
 using UnityEngine;
 
 namespace Framework.FSMStates
 {
+    /// <summary>
+    /// 结束状态
+    /// </summary>
     public class StateEnd : FSMState<GameLauncher>
     {
      
