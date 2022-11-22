@@ -9,22 +9,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using GamePoint.Event;
 using UnityEngine;
+using GamePoint.Event;
+using GamePoint.Model;
 
-namespace GamePoint
+namespace GamePoint.Game
 {
     public class Enemy : MonoBehaviour
     {
-        private static int enemyCount = 0;
-
         private void OnMouseDown()
         {
-            enemyCount++;
-            if (enemyCount == 10)
-            {
-                GamePassEvent.Trigger();
-            }
+            KilledOneEnemyEvent.Trigger();
             Destroy(gameObject);
         }
     }

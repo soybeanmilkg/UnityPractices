@@ -8,21 +8,30 @@
 
 using System;
 using GamePoint.Event;
+using GamePoint.Model;
 using UnityEngine;
 
-namespace GamePoint
+namespace GamePoint.Game
 {
     public class Game : MonoBehaviour
     {
+        #region Lifecycle
+
         private void Awake()
         {
             GameStartEvent.Register(OnGameStart);
+            KilledOneEnemyEvent.Register(OnEnemyKilled);
         }
 
         private void OnDestroy()
         {
             GameStartEvent.Unregister(OnGameStart);
+            KilledOneEnemyEvent.Unregister(OnEnemyKilled);
         }
+
+        #endregion
+        
+        #region Event
 
         /// <summary>
         /// 游戏开始
@@ -31,5 +40,19 @@ namespace GamePoint
         {
             transform.Find("Enemies").gameObject.SetActive(true);
         }
+
+        /// <summary>
+        /// 一个敌人被击杀
+        /// </summary>
+        private void OnEnemyKilled()
+        {
+            GameModel.KillCount++;
+            if (GameModel.KillCount == 10)
+            {
+                GamePassEvent.Trigger();
+            }
+        }
+
+        #endregion
     }
 }

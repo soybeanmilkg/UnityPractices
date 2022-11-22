@@ -1,5 +1,5 @@
 ﻿// /**
-//  * File Name: Assets/GamePoint/Srcipts/Event/GamePassEvent.cs
+//  * File Name: GamePassEvent.cs
 //  * Create By: soybeanmilk
 //  * Create Time: 2022/11/21 23:47
 //  * Descrption:
@@ -7,37 +7,14 @@
 //  */
 
 using System;
+using Framework.Event;
 
 namespace GamePoint.Event
 {
-    public static class GamePassEvent
+    /// <summary>
+    /// 游戏结束事件
+    /// </summary>
+    public class GamePassEvent : Event<GamePassEvent>
     {
-        private static Action mOnEvent;
-
-        /// <summary>
-        /// 注册事件
-        /// </summary>
-        /// <param name="onEvent"></param>
-        public static void Register(Action onEvent)
-        {
-            mOnEvent += onEvent;
-        }
-
-        /// <summary>
-        /// 注销事件
-        /// </summary>
-        /// <param name="onEvent"></param>
-        public static void Unregister(Action onEvent)
-        {
-            mOnEvent -= onEvent;
-        }
-
-        /// <summary>
-        /// 触发事件
-        /// </summary>
-        public static void Trigger()
-        {
-            mOnEvent?.Invoke();
-        }
     }
 }

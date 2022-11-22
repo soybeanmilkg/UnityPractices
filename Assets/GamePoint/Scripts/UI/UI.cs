@@ -13,8 +13,12 @@ using UnityEngine;
 
 namespace GamePoint.UI
 {
+    /// <summary>
+    /// UI脚本
+    /// </summary>
     public class UI : MonoBehaviour
     {
+        #region Lifecycle
         private void Start()
         {
             GamePassEvent.Register(OnGamePass);
@@ -24,10 +28,13 @@ namespace GamePoint.UI
         {
             GamePassEvent.Unregister(OnGamePass);
         }
-
+        #endregion
+        
+        #region Event
         private void OnGamePass()
         {
             transform.Find("Canvas/GamePassPanel").gameObject.SetActive(true);
         }
+        #endregion
     }
 }
