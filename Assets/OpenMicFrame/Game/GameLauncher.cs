@@ -7,14 +7,15 @@
 //  */
 
 using System;
+using System.Collections.Generic;
 using Framework.FSM;
-using Framework.FSMStates;
+using Framework.Log;
 using Framework.Singleton;
+using OpenMicFrame.FSMStates;
 using UnityEngine;
 
 namespace Framework.Game
 {
-
     /// <summary>
     /// 游戏状态
     /// </summary>
@@ -24,31 +25,50 @@ namespace Framework.Game
         Play,
         End
     }
-    
+
     /// <summary>
     /// 游戏启动类 
     /// </summary>
     public sealed class GameLauncher : MonoSingleton<GameLauncher>
     {
+        [SerializeField] private bool enableLog;
+        [SerializeField] private List<string> logTags;
+
         // 下一个状态
         private EGameState toState = EGameState.None;
+
         // 有限状态机
         private FSM<GameLauncher> fsm;
 
         #region 生命周期
+
         private void Awake()
         {
-            Debug.Log("GameLauncher Awake");
+            // logger
+            var logger = new LogMgr
+            {
+                logEnabled = enableLog
+            };
+            using (var itr = logTags.GetEnumerator())
+            {
+                while (itr.MoveNext())
+                {
+                    logger.SetTag(itr.Current, true);
+                }
+            }
+
+            logger.Log(ELogType.Debug,"Game", "GameLauncher Awake");
+            Engine.Instance.logger = logger;
             Engine.Instance.Init();
             Engine.Instance.SetUp();
         }
 
         private void Start()
         {
-            Debug.Log("GameLauncher Start");
+            Engine.Instance.logger.Log(ELogType.Debug, "Game", "GameLauncher Start");
             fsm = new FSM<GameLauncher>(this);
             FSMBuilder.Initialize(fsm);
-            
+
             ChangeState(EGameState.Play, true);
         }
 
@@ -71,8 +91,9 @@ namespace Framework.Game
         {
             fsm?.LateUpdate(Time.deltaTime);
         }
+
         #endregion
-        
+
         /// <summary>
         /// 游戏状态切换
         /// </summary>
@@ -91,7 +112,7 @@ namespace Framework.Game
             }
         }
     }
-    
+
     /// <summary>
     /// 构建状态
     /// </summary>

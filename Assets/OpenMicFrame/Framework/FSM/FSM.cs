@@ -28,17 +28,16 @@ namespace Framework.FSM
 
         public void Destroy()
         {
+            curState?.Exit(this);
             curState = null;
             toState = null;
-
-            using (var itr = stateHash.GetEnumerator())
-            {
-                while (itr.MoveNext())
-                {
-                    itr.Current.Value.Exit(this);
-                }
-            }
-
+            // using (var itr = stateHash.GetEnumerator())
+            // {
+            //     while (itr.MoveNext())
+            //     {
+            //         itr.Current.Value.Exit(this);
+            //     }
+            // }
             stateHash.Clear();
         }
 

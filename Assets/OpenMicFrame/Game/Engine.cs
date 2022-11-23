@@ -7,6 +7,7 @@
 //  */
 
 using System;
+using Framework.Log;
 using Framework.Singleton;
 using UnityEngine;
 
@@ -17,14 +18,15 @@ namespace Framework.Game
     /// </summary>
     public sealed class Engine : Singleton<Engine>
     {
+        public ILog logger;
         public void Init()
         {
-            Debug.Log("Engine Init");
+            logger.Log(ELogType.Debug, "Game", "Engine Init");
         }
 
         public void SetUp()
         {
-            Debug.Log("Engine SetUp");
+            logger.Log(ELogType.Debug, "Game", "Engine SetUp");
         }
     }
 }
