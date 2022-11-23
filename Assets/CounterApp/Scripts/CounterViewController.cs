@@ -7,6 +7,7 @@
 //  */
 
 using System;
+using CounterApp.Command;
 using CounterApp.Model;
 using TMPro;
 using UnityEngine;
@@ -20,8 +21,10 @@ namespace CounterApp
         {
             CounterModel.count.mOnValueChanged += OnCountChanged;
             OnCountChanged(CounterModel.count.Value);
-            transform.Find("ButtonAdd").GetComponent<Button>().onClick.AddListener(() => { CounterModel.count.Value++; });
-            transform.Find("ButtonSub").GetComponent<Button>().onClick.AddListener((() => { CounterModel.count.Value--; }));
+            transform.Find("ButtonAdd").GetComponent<Button>().onClick
+                .AddListener(() => { new AddCountCommand().Execute(); });
+            transform.Find("ButtonSub").GetComponent<Button>().onClick
+                .AddListener((() => { new SubCountCommand().Execute(); }));
         }
 
         private void OnDestroy()

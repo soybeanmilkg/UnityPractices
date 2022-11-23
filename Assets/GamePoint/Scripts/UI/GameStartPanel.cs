@@ -8,6 +8,7 @@
 
 using System;
 using GamePoint.Event;
+using GamePoint.Scripts.Command;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,7 +22,7 @@ namespace GamePoint.UI
             transform.Find("BtnStart").GetComponent<Button>().onClick.AddListener((() =>
             {
                 gameObject.SetActive(false);
-                GameStartEvent.Trigger();
+                new GameStartCommand().Execute();
             }));
         }
     }

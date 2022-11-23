@@ -9,6 +9,7 @@
 using System;
 using GamePoint.Event;
 using GamePoint.Model;
+using GamePoint.Scripts.Command;
 using UnityEngine;
 
 namespace GamePoint.Game
@@ -48,7 +49,7 @@ namespace GamePoint.Game
         {
             if (killCount == 10)
             {
-                GamePassEvent.Trigger();
+                new GamePassCommand().Execute();
             }
         }
 

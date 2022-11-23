@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GamePoint.Event;
 using GamePoint.Model;
+using GamePoint.Scripts.Command;
 
 namespace GamePoint.Game
 {
@@ -19,8 +20,12 @@ namespace GamePoint.Game
     {
         private void OnMouseDown()
         {
-            GameModel.killCount.Value++;
-            Destroy(gameObject);
+            var killEnemyCommand = new KillEnemyCommand
+            {
+                GO = gameObject
+            };
+            killEnemyCommand.Execute();
+            // Destroy(gameObject);
         }
     }
 }
