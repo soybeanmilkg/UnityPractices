@@ -9,6 +9,7 @@
 using System;
 using Framework.Log;
 using Framework.Singleton;
+using OpenMicFrame.Framework.Event;
 using UnityEngine;
 
 namespace Framework.Game
@@ -19,9 +20,11 @@ namespace Framework.Game
     public sealed class Engine : Singleton<Engine>
     {
         public ILog logger;
+        public EventMgr eventMgr;
         public void Init()
         {
             logger.Log(ELogType.Debug, "Game", "Engine Init");
+            eventMgr = new EventMgr();
         }
 
         public void SetUp()
