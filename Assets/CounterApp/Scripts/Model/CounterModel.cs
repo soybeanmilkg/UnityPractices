@@ -13,6 +13,6 @@ namespace CounterApp.Model
 {
     public class CounterModel
     {
-        public static BindableProperty<int> count = new BindableProperty<int>();
+        public static readonly BindableProperty<int> count = new BindableProperty<int>();
     }
 }

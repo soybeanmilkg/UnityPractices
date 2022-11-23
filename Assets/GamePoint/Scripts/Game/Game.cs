@@ -21,13 +21,11 @@ namespace GamePoint.Game
         private void Awake()
         {
             GameStartEvent.Register(OnGameStart);
-            GameModel.killCount.mOnValueChanged += OnEnemyKilled;
         }
 
         private void OnDestroy()
         {
             GameStartEvent.Unregister(OnGameStart);
-            GameModel.killCount.mOnValueChanged -= OnEnemyKilled;
         }
 
         #endregion
@@ -40,17 +38,6 @@ namespace GamePoint.Game
         private void OnGameStart()
         {
             transform.Find("Enemies").gameObject.SetActive(true);
-        }
-
-        /// <summary>
-        /// 一个敌人被击杀
-        /// </summary>
-        private void OnEnemyKilled(int killCount)
-        {
-            if (killCount == 10)
-            {
-                new GamePassCommand().Execute();
-            }
         }
 
         #endregion

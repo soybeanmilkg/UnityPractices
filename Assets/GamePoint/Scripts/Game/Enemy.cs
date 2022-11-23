@@ -20,12 +20,8 @@ namespace GamePoint.Game
     {
         private void OnMouseDown()
         {
-            var killEnemyCommand = new KillEnemyCommand
-            {
-                GO = gameObject
-            };
-            killEnemyCommand.Execute();
-            // Destroy(gameObject);
+            Destroy(gameObject);
+            new KillEnemyCommand().Execute();
         }
     }
 }

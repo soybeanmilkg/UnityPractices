@@ -11,7 +11,7 @@ using System.Collections;
 using GamePoint.Event;
 using UnityEngine;
 
-namespace GamePoint.UI
+namespace GamePoint.Game.UI
 {
     /// <summary>
     /// UI脚本

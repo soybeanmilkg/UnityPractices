@@ -6,6 +6,7 @@
 //  *
 //  */
 
+using GamePoint.Event;
 using GamePoint.Framework.Command;
 using GamePoint.Model;
 using UnityEngine;
@@ -14,18 +15,13 @@ namespace GamePoint.Scripts.Command
 {
     public struct KillEnemyCommand : ICommand
     {
-        private GameObject go;
-
-        public GameObject GO
-        {
-            get => go;
-            set => go = value;
-        }
-
         public void Execute()
         {
             GameModel.killCount.Value++;
-            Object.Destroy(go);
+            if (GameModel.killCount.Value == 10)
+            {
+                GamePassEvent.Trigger();
+            }
         }
     }
 }

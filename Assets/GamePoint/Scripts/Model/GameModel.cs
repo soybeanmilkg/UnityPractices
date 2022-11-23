@@ -13,15 +13,15 @@ namespace GamePoint.Model
     public class GameModel
     {
         // 击杀数
-        public static BindableProperty<int> killCount = new BindableProperty<int>();
+        public static readonly BindableProperty<int> killCount = new BindableProperty<int>();
 
         // 金币数
-        public static BindableProperty<int> gold = new BindableProperty<int>();
+        public static readonly BindableProperty<int> gold = new BindableProperty<int>();
 
         // 分数
-        public static BindableProperty<int> score = new BindableProperty<int>();
+        public static readonly BindableProperty<int> score = new BindableProperty<int>();
 
         // 最高分数
-        public static BindableProperty<int> bestScore = new BindableProperty<int>();
+        public static readonly BindableProperty<int> bestScore = new BindableProperty<int>();
     }
 }

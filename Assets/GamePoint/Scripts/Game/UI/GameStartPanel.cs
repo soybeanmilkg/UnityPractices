@@ -12,7 +12,7 @@ using GamePoint.Scripts.Command;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace GamePoint.UI
+namespace GamePoint.Game.UI
 {
     public class GameStartPanel : MonoBehaviour
     {
@@ -22,7 +22,7 @@ namespace GamePoint.UI
             transform.Find("BtnStart").GetComponent<Button>().onClick.AddListener((() =>
             {
                 gameObject.SetActive(false);
-                new GameStartCommand().Execute();
+                GameStartEvent.Trigger();
             }));
         }
     }
