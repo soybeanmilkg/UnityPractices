@@ -19,7 +19,7 @@ namespace GamePoint.Game
     {
         private void OnMouseDown()
         {
-            KilledOneEnemyEvent.Trigger();
+            GameModel.killCount.Value++;
             Destroy(gameObject);
         }
     }

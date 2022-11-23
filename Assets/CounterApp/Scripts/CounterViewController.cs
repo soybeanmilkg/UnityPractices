@@ -18,23 +18,20 @@ namespace CounterApp
     {
         private void Start()
         {
-            UpdateView();
-            transform.Find("ButtonAdd").GetComponent<Button>().onClick.AddListener(() =>
-            {
-                CounterModel.Count++;
-                UpdateView();
-            });
-
-            transform.Find("ButtonSub").GetComponent<Button>().onClick.AddListener((() =>
-            {
-                CounterModel.Count--;
-                UpdateView();
-            }));
+            CounterModel.count.mOnValueChanged += OnCountChanged;
+            OnCountChanged(CounterModel.count.Value);
+            transform.Find("ButtonAdd").GetComponent<Button>().onClick.AddListener(() => { CounterModel.count.Value++; });
+            transform.Find("ButtonSub").GetComponent<Button>().onClick.AddListener((() => { CounterModel.count.Value--; }));
         }
 
-        private void UpdateView()
+        private void OnDestroy()
         {
-            transform.Find("Count").GetComponent<TMP_Text>().text = CounterModel.Count.ToString();
+            CounterModel.count.mOnValueChanged -= OnCountChanged;
+        }
+
+        private void OnCountChanged(int value)
+        {
+            transform.Find("Count").GetComponent<TMP_Text>().text = value.ToString();
         }
     }
 }

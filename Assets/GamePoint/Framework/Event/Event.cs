@@ -8,7 +8,7 @@
 
 using System;
 
-namespace Framework.Event
+namespace GamePoint.Framework.Event
 {
     /// <summary>
     /// 事件基类

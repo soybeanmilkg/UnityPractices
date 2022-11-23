@@ -20,17 +20,17 @@ namespace GamePoint.Game
         private void Awake()
         {
             GameStartEvent.Register(OnGameStart);
-            KilledOneEnemyEvent.Register(OnEnemyKilled);
+            GameModel.killCount.mOnValueChanged += OnEnemyKilled;
         }
 
         private void OnDestroy()
         {
             GameStartEvent.Unregister(OnGameStart);
-            KilledOneEnemyEvent.Unregister(OnEnemyKilled);
+            GameModel.killCount.mOnValueChanged -= OnEnemyKilled;
         }
 
         #endregion
-        
+
         #region Event
 
         /// <summary>
@@ -44,10 +44,9 @@ namespace GamePoint.Game
         /// <summary>
         /// 一个敌人被击杀
         /// </summary>
-        private void OnEnemyKilled()
+        private void OnEnemyKilled(int killCount)
         {
-            GameModel.KillCount++;
-            if (GameModel.KillCount == 10)
+            if (killCount == 10)
             {
                 GamePassEvent.Trigger();
             }

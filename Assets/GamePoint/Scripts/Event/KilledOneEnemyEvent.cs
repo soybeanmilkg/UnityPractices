@@ -6,7 +6,7 @@
 //  *
 //  */
 
-using Framework.Event;
+using GamePoint.Framework.Event;
 
 namespace GamePoint.Event
 {

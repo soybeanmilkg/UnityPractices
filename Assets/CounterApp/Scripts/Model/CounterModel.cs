@@ -6,10 +6,13 @@
 //  *
 //  */
 
+using System;
+using GamePoint.Framework.BindableProperty;
+
 namespace CounterApp.Model
 {
     public class CounterModel
     {
-        public static int Count = 0;
+        public static BindableProperty<int> count = new BindableProperty<int>();
     }
 }
